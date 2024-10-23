@@ -29,12 +29,11 @@ def nice_strings_corrected():
         pairs = []
         pair_repeats = False
         sandwich = False
-        for i in range(1,len(content),2):
-            if (content[i-1] + content[i]) in pairs: pair_repeats = True
-            else: pairs.append(content[i-1] + content[i])
-            if (i+1) != len(content) and (content[i] + content[i+1]) in pairs and (not (content[i-1] == content[i] and content[i] == content[i+1])): pair_repeats = True
-            else: pairs.append(content[i] + content[i+1])
-            if (i+1) != len(content) and (content[i-1] == content[i+1]): sandwich = True
+        for i in range(0,len(content)-1):
+            if (i+2 < len(content)) and content[i] == content[i+2]: sandwich = True
+            if (content[i], content[i+1]) != (content[i-1], content[i]) and (content[i], content[i+1]) in pairs: pair_repeats = True
+            elif pairs.count((content[i], content[i+1])) == 2: pair_repeats = True
+            else: pairs.append((content[i], content[i+1]))
         if pair_repeats and sandwich: strings_count += 1
     print(strings_count)
 
