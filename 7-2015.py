@@ -1,5 +1,5 @@
-def a_wirte_signal():
-    file = open('2015-7-txt', 'r')
+def a_wire_signal():
+    file = open('7-2015-input', 'r')
     values = {}
     while True:
         content = file.readline()
@@ -17,3 +17,14 @@ def a_wirte_signal():
         match operation:
             case 'AND':
                 values[partitions[4]] = int(left_operand) & int(right_operand)
+                break
+            case 'OR':
+                values[partitions[4]] = int(left_operand) | int(right_operand)
+                break
+            case 'LSHIFT':
+                values[partitions[4]] = int(left_operand) << int(right_operand)
+                break
+            case 'RSHIFT':
+                values[partitions[4]] = int(left_operand) >> int(right_operand)
+                break
+    return values['a']
