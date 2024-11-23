@@ -1,5 +1,5 @@
 export type Flight = {
-  fcity: string;
-  scity: string;
+  origin: string;
+  end: string;
   dist: number;
 };
